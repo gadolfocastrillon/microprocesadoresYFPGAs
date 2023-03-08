@@ -70,7 +70,14 @@ BEGIN
 		salida <= not(entrada1); 
 	else if selector = "1011" then 
 		--complemento de A 
+		--Es cambiar los valores de 1 a 0 y cambiar los valores de 0 a 1. 
 		
+		for i in 0 to 7 loop: 
+			if (entrada1[i] = 1): 
+				salida[i] = 0; 
+			else: 
+				salida[i] = 1; 
+	
 	else
 		--reset el programa 
 
