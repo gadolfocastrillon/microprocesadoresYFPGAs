@@ -145,10 +145,10 @@ BEGIN&#13;
 			 			salida &lt;= "0011";
 			 			when "000" =&gt; estado_actual &lt;= s3; 
 			 			when "001" =&gt; estado_actual &lt;= s4; 
-			 			when "010" =&gt; estado_actual &lt;= s5; 
+			 			when "010" =&gt; estado_actual &lt;= s3; 
 			 			when "100" =&gt; estado_actual &lt;= s1; 
 			 			when "101" =&gt; estado_actual &lt;= s0; 
-			 			when "110" =&gt; estado_actual &lt;= s7; 
+			 			when "110" =&gt; estado_actual &lt;= s1; 
 			 			when others =&gt; null; 
 			 			end case; 
 					else 
@@ -159,12 +159,12 @@ BEGIN&#13;
 				when s3 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0011";
-			 			when "000" =&gt; estado_actual &lt;= s2; 
-			 			when "001" =&gt; estado_actual &lt;= s2; 
-			 			when "010" =&gt; estado_actual &lt;= s3; 
-			 			when "100" =&gt; estado_actual &lt;= s0; 
-			 			when "101" =&gt; estado_actual &lt;= s6; 
-			 			when "110" =&gt; estado_actual &lt;= s7; 
+			 			when "000" =&gt; estado_actual &lt;= s4; 
+			 			when "001" =&gt; estado_actual &lt;= s4; 
+			 			when "010" =&gt; estado_actual &lt;= s5; 
+			 			when "100" =&gt; estado_actual &lt;= s2; 
+			 			when "101" =&gt; estado_actual &lt;= s2; 
+			 			when "110" =&gt; estado_actual &lt;= s1; 
 			 			when others =&gt; null; 
 			 			end case; 
 					else 
@@ -175,12 +175,12 @@ BEGIN&#13;
 				when s4 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0011";
-			 			when "000" =&gt; estado_actual &lt;= s2; 
-			 			when "001" =&gt; estado_actual &lt;= s2; 
-			 			when "010" =&gt; estado_actual &lt;= s3; 
-			 			when "100" =&gt; estado_actual &lt;= s0; 
-			 			when "101" =&gt; estado_actual &lt;= s6; 
-			 			when "110" =&gt; estado_actual &lt;= s7; 
+			 			when "000" =&gt; estado_actual &lt;= s5; 
+			 			when "001" =&gt; estado_actual &lt;= s6; 
+			 			when "010" =&gt; estado_actual &lt;= s5; 
+			 			when "100" =&gt; estado_actual &lt;= s3; 
+			 			when "101" =&gt; estado_actual &lt;= s2; 
+			 			when "110" =&gt; estado_actual &lt;= s3; 
 			 			when others =&gt; null; 
 			 			end case; 
 					else 
@@ -191,12 +191,12 @@ BEGIN&#13;
 				when s5 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0011";
-			 			when "000" =&gt; estado_actual &lt;= s2; 
-			 			when "001" =&gt; estado_actual &lt;= s2; 
-			 			when "010" =&gt; estado_actual &lt;= s3; 
-			 			when "100" =&gt; estado_actual &lt;= s0; 
-			 			when "101" =&gt; estado_actual &lt;= s6; 
-			 			when "110" =&gt; estado_actual &lt;= s7; 
+			 			when "000" =&gt; estado_actual &lt;= s6; 
+			 			when "001" =&gt; estado_actual &lt;= s6; 
+			 			when "010" =&gt; estado_actual &lt;= s7; 
+			 			when "100" =&gt; estado_actual &lt;= s4; 
+			 			when "101" =&gt; estado_actual &lt;= s4; 
+			 			when "110" =&gt; estado_actual &lt;= s3; 
 			 			when others =&gt; null; 
 			 			end case; 
 					else 
@@ -207,12 +207,12 @@ BEGIN&#13;
 				when s6 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0011";
-			 			when "000" =&gt; estado_actual &lt;= s2; 
-			 			when "001" =&gt; estado_actual &lt;= s2; 
-			 			when "010" =&gt; estado_actual &lt;= s3; 
-			 			when "100" =&gt; estado_actual &lt;= s0; 
-			 			when "101" =&gt; estado_actual &lt;= s6; 
-			 			when "110" =&gt; estado_actual &lt;= s7; 
+			 			when "000" =&gt; estado_actual &lt;= s7; 
+			 			when "001" =&gt; estado_actual &lt;= s0; 
+			 			when "010" =&gt; estado_actual &lt;= s7; 
+			 			when "100" =&gt; estado_actual &lt;= s5; 
+			 			when "101" =&gt; estado_actual &lt;= s4; 
+			 			when "110" =&gt; estado_actual &lt;= s5; 
 			 			when others =&gt; null; 
 			 			end case; 
 					else 
@@ -223,12 +223,12 @@ BEGIN&#13;
 				when s7 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0011";
-			 			when "000" =&gt; estado_actual &lt;= s2; 
-			 			when "001" =&gt; estado_actual &lt;= s2; 
-			 			when "010" =&gt; estado_actual &lt;= s3; 
-			 			when "100" =&gt; estado_actual &lt;= s0; 
+			 			when "000" =&gt; estado_actual &lt;= s0; 
+			 			when "001" =&gt; estado_actual &lt;= s0; 
+			 			when "010" =&gt; estado_actual &lt;= s1; 
+			 			when "100" =&gt; estado_actual &lt;= s6; 
 			 			when "101" =&gt; estado_actual &lt;= s6; 
-			 			when "110" =&gt; estado_actual &lt;= s7; 
+			 			when "110" =&gt; estado_actual &lt;= s5; 
 			 			when others =&gt; null; 
 			 			end case; 
 					else 
