@@ -55,10 +55,57 @@
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="main"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
+    <a name="simulationFrequency" val="2.0"/>
+    <comp lib="0" loc="(180,320)" name="Clock"/>
+    <comp lib="0" loc="(320,450)" name="Splitter">
+      <a name="facing" val="north"/>
+      <a name="fanout" val="3"/>
+      <a name="incoming" val="3"/>
+    </comp>
+    <comp lib="0" loc="(640,340)" name="Splitter">
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+    </comp>
+    <comp lib="5" loc="(140,450)" name="DipSwitch"/>
+    <comp lib="5" loc="(160,230)" name="Button"/>
+    <comp lib="5" loc="(710,300)" name="LED"/>
+    <comp lib="5" loc="(710,330)" name="LED"/>
+    <comp lib="5" loc="(710,360)" name="LED"/>
+    <comp lib="5" loc="(710,390)" name="LED"/>
     <comp loc="(590,350)" name="motor">
       <a name="appearance" val="logisim_evolution"/>
     </comp>
+    <wire from="(150,370)" to="(150,450)"/>
+    <wire from="(150,370)" to="(370,370)"/>
+    <wire from="(160,230)" to="(340,230)"/>
+    <wire from="(160,380)" to="(160,450)"/>
+    <wire from="(160,380)" to="(310,380)"/>
+    <wire from="(170,390)" to="(170,450)"/>
+    <wire from="(170,390)" to="(300,390)"/>
+    <wire from="(180,320)" to="(370,320)"/>
+    <wire from="(180,400)" to="(180,450)"/>
+    <wire from="(180,400)" to="(290,400)"/>
+    <wire from="(290,400)" to="(290,430)"/>
+    <wire from="(300,390)" to="(300,430)"/>
+    <wire from="(310,380)" to="(310,430)"/>
+    <wire from="(320,450)" to="(360,450)"/>
+    <wire from="(340,230)" to="(340,390)"/>
+    <wire from="(340,390)" to="(370,390)"/>
+    <wire from="(360,410)" to="(360,450)"/>
+    <wire from="(360,410)" to="(370,410)"/>
+    <wire from="(370,320)" to="(370,350)"/>
+    <wire from="(590,350)" to="(640,350)"/>
+    <wire from="(640,340)" to="(640,350)"/>
+    <wire from="(660,300)" to="(710,300)"/>
+    <wire from="(660,310)" to="(700,310)"/>
+    <wire from="(660,320)" to="(690,320)"/>
+    <wire from="(660,330)" to="(680,330)"/>
+    <wire from="(680,330)" to="(680,390)"/>
+    <wire from="(680,390)" to="(710,390)"/>
+    <wire from="(690,320)" to="(690,360)"/>
+    <wire from="(690,360)" to="(710,360)"/>
+    <wire from="(700,310)" to="(700,330)"/>
+    <wire from="(700,330)" to="(710,330)"/>
   </circuit>
   <vhdl name="motor">--------------------------------------------------------------------------------&#13;
 -- Project :&#13; Motor de paso 
@@ -103,14 +150,15 @@ ARCHITECTURE TypeArchitecture OF motor IS&#13;
 BEGIN&#13;
 &#13;	motor1: process(clock,reset)
 	begin 
-		if reset = '0' then
+		if reset = '1' then
 			estado_actual &lt;= s0; 
 			salida &lt;= "0000"; 
-		elsif rising_edge(clock) and clock = '1' then
-			case estado_actual is: 
+		elsif rising_edge(clock) then
+			case estado_actual is 
 			 	when s0 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0001";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s1; 
 			 			when "001" =&gt; estado_actual &lt;= s2; 
 			 			when "010" =&gt; estado_actual &lt;= s1; 
@@ -127,6 +175,7 @@ BEGIN&#13;
 				when s1 =&gt; 
 			 		if enable = '1' then
 			 			salida &lt;= "0011";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s2; 
 			 			when "001" =&gt; estado_actual &lt;= s2; 
 			 			when "010" =&gt; estado_actual &lt;= s3; 
@@ -142,7 +191,8 @@ BEGIN&#13;
 				
 				when s2 =&gt; 
 			 		if enable = '1' then
-			 			salida &lt;= "0011";
+			 			salida &lt;= "0010";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s3; 
 			 			when "001" =&gt; estado_actual &lt;= s4; 
 			 			when "010" =&gt; estado_actual &lt;= s3; 
@@ -158,7 +208,8 @@ BEGIN&#13;
 				
 				when s3 =&gt; 
 			 		if enable = '1' then
-			 			salida &lt;= "0011";
+			 			salida &lt;= "0110";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s4; 
 			 			when "001" =&gt; estado_actual &lt;= s4; 
 			 			when "010" =&gt; estado_actual &lt;= s5; 
@@ -174,7 +225,8 @@ BEGIN&#13;
 				
 				when s4 =&gt; 
 			 		if enable = '1' then
-			 			salida &lt;= "0011";
+			 			salida &lt;= "0100";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s5; 
 			 			when "001" =&gt; estado_actual &lt;= s6; 
 			 			when "010" =&gt; estado_actual &lt;= s5; 
@@ -190,7 +242,8 @@ BEGIN&#13;
 				
 				when s5 =&gt; 
 			 		if enable = '1' then
-			 			salida &lt;= "0011";
+			 			salida &lt;= "1100";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s6; 
 			 			when "001" =&gt; estado_actual &lt;= s6; 
 			 			when "010" =&gt; estado_actual &lt;= s7; 
@@ -206,7 +259,8 @@ BEGIN&#13;
 				
 				when s6 =&gt; 
 			 		if enable = '1' then
-			 			salida &lt;= "0011";
+			 			salida &lt;= "1000";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s7; 
 			 			when "001" =&gt; estado_actual &lt;= s0; 
 			 			when "010" =&gt; estado_actual &lt;= s7; 
@@ -222,7 +276,8 @@ BEGIN&#13;
 				
 				when s7 =&gt; 
 			 		if enable = '1' then
-			 			salida &lt;= "0011";
+			 			salida &lt;= "1001";
+			 			case selector is
 			 			when "000" =&gt; estado_actual &lt;= s0; 
 			 			when "001" =&gt; estado_actual &lt;= s0; 
 			 			when "010" =&gt; estado_actual &lt;= s1; 
@@ -236,7 +291,7 @@ BEGIN&#13;
 						estado_actual &lt;= s0;  
 					end if;
 
-				when other =&gt; 
+				when others =&gt; 
 					salida &lt;= "0000"; 
 					estado_actual &lt;= s0; 
 			end case; 
